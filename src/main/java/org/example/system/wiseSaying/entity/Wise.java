@@ -2,9 +2,6 @@ package org.example.system.wiseSaying.entity;
 
 public class Wise {
     private int idx_num;
-
-
-
     private String name;
     private String talked;
 
