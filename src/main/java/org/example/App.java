@@ -3,14 +3,16 @@ package org.example;
 import org.example.system.wiseSaying.controller.SystemController;
 import org.example.system.wiseSaying.controller.wiseSayingController;
 import org.example.system.wiseSaying.entity.Wise;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class App {
-    void Run(){
+    void Run() throws IOException, ParseException {
         System.out.println("== 명언 앱 ==");
         //등록할거를 받아서 넣어주기위한 add 객체
 

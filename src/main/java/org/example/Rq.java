@@ -35,9 +35,11 @@ public class Rq {
         return map.get(name);
     }
 
-    public int getIntParam(String name, int defaultValue){
+    //현재 원하는 값이 존재하는지 체크
+    //없을경우 default값을 리턴한다.
+    public Long getLongParam(String name, long defaultValue){
         try{
-            return Integer.parseInt(getParam(name));
+            return Long.parseLong(getParam(name));
 
         }catch (NumberFormatException e){
 
