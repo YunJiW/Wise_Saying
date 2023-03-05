@@ -3,46 +3,42 @@ package org.example.system.wiseSaying.service;
 import org.example.Container;
 import org.example.Rq;
 import org.example.system.wiseSaying.entity.Wise;
+import org.example.system.wiseSaying.repositoy.WiseSayingRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingService {
-    private Long idx;
-    private List<Wise> WiseList;
+
+    private WiseSayingRepository wiseSayingRepository;
 
     public WiseSayingService() {
-        idx = 0L;
-        WiseList = new ArrayList<>();
+
+        wiseSayingRepository = new WiseSayingRepository();
     }
 
-    public Wise findById(Long id) {
-        for(Wise wise : WiseList){
-            if(wise.getIdx_num() == id){
-                return wise;
-            }
-        }
-        //없으면 null 리턴
-        return null;
-    }
+
 
     public long write(String talked, String name) {
-        long id = idx+1;
-        Wise wise = new Wise(id,talked,name);
-        WiseList.add(wise);
+        return wiseSayingRepository.write(talked,name);
 
-        return id;
     }
     public void remove(Wise wise) {
-        WiseList.remove(wise);
+        wiseSayingRepository.remove(wise);
+
     }
 
     public void ReWrite(Wise wise,String name,String talked) {
-        wise.setName(name);
-        wise.setTalked(talked);
+        wiseSayingRepository.modify(wise,name,talked);
+
     }
 
-    public List<Wise> findAll() {
-        return WiseList;
+
+    public Wise findById(long id) {
+        return wiseSayingRepository.findById(id);
+    }
+
+    public List<Wise> findAll(){
+        return wiseSayingRepository.findAll();
     }
 }
