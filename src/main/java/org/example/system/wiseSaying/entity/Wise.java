@@ -1,14 +1,14 @@
 package org.example.system.wiseSaying.entity;
 
 public class Wise {
-    private Long idx_num;
+    private long idx_num;
     private String name;
     private String talked;
 
     public Wise(){
 
     }
-    public Wise(Long idx_num,String name,String talked){
+    public Wise(long idx_num,String name,String talked){
         this.idx_num = idx_num;
         this.name = name;
         this.talked = talked;
@@ -34,7 +34,17 @@ public class Wise {
         return idx_num;
     }
 
-    public void setIdx_num(Long idx_num) {
-        this.idx_num = idx_num;
+
+    public String toJson() {
+        return """
+                {
+                    "id": %d,
+                    "talked": "%s",
+                    "name" : "%s"
+                }
+                """
+                .stripIndent()
+                .formatted(idx_num,talked,name)
+                .trim();
     }
 }
